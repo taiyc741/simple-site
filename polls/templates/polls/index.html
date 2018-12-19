@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>首页</title>
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}" />
+</head>
+<body>
+  {% if question_list_obj %}
+    <ul>
+      {% for q in question_list_obj %}
+        <li><a href="{% url 'polls:detail' q.id %}">问题:{{ q.question_text }}时间:{{ q.pub_date }}</a></li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>没有问题</p>
+  {% endif %}
+</body>
+</html>
